@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.linspace(-2, 2, 100)
-y = x * 2 + 0.2 * np.random.rand(100)
+y = x * 2 + 0.2
 # hypothesis y = a + bx
 t1 = t2 = 0
 
 
-class hypothesis(object):
+class Hypothesis(object):
     def __init__(self, a, b, m, lr):
         self.a = a
         self.b = b
@@ -19,8 +19,10 @@ class hypothesis(object):
 
     def iteration(self, i, j):
         while round(sum(self.calculate(i) - j), 8) != 0:
-            self.a = self.a - self.lr * (1 / self.m) * sum(self.calculate(i) - j)
-            self.b = self.b - self.lr * (1 / self.m) * sum((self.calculate(i) - j) * i)
+            temp = sum(self.calculate(i) - j)
+            temp2 = sum((self.calculate(i) - j) * i)
+            self.a = self.a - self.lr * (1 / self.m) * temp
+            self.b = self.b - self.lr * (1 / self.m) * temp2
             plt.cla()
             plt.scatter(i, j)
             plt.plot(i, hypo.a + hypo.b * i, 'r-', lw=5)
@@ -31,8 +33,7 @@ class hypothesis(object):
         return "y = %.2f  +  %.2f x" % (self.a, self.b)
 
 
-hypo = hypothesis(t1, t2, 100, 0.2)
-
+hypo = Hypothesis(t1, t2, 100, 0.2)
 hypo.iteration(x, y)
 print(hypo)
 
