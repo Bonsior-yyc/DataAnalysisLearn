@@ -25,7 +25,7 @@ class Hypothesis(object):
             self.b = self.b - self.lr * (1 / self.m) * temp2
             plt.cla()
             plt.scatter(i, j)
-            plt.plot(i, hypo.a + hypo.b * i, 'r-', lw=5)
+            plt.plot(i, self.a + self.b * i, 'r-', lw=5)
             plt.text(0.5, 0, "y = %.2f  +  %.2f x" % (self.a, self.b), fontdict={'size': 20, 'color': 'red'})
             plt.pause(0.1)
 

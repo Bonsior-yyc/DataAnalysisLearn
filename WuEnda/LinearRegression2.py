@@ -26,8 +26,8 @@ z = np.array(z_in)
 
 
 class HypothesisTwo(object):
-    def __init__(self, theta, dimension, m, lr):
-        self.theta = theta
+    def __init__(self, dimension, m, lr):
+        self.theta = np.array([0, 0, 0])
         self.m = m
         self.lr = lr
         self.dimension = dimension
@@ -62,7 +62,7 @@ class HypothesisTwo(object):
         return out
 
 
-hypo = HypothesisTwo(th, 3, len(z_in), 0.1)
+hypo = HypothesisTwo(3, len(z_in), 0.1)
 
 hypo.iteration(ip, z)
 print(hypo)
